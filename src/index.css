@@ -1,0 +1,104 @@
+body {
+    background-color: #792368;
+    color: #FFFFFF;
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 1.2em;
+    line-height: 150%;
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: stretch;
+    padding: 1em; }
+  
+  h1 {
+    color: #FFD800;
+    font-weight: normal; }
+  
+  article {
+    background-color: #367b6b;
+    margin: 1em;
+    padding: 2em; }
+
+button, select
+{
+    background-color: #FFD800;
+    border: 0;
+    padding: 3px 6px;
+    font-weight: bold;
+    /*-webkit-appearance: none;*/
+}
+
+em
+{
+    font-weight: bold;
+    color: #FFD800;
+}
+
+input, textarea
+{
+    border: 0;
+    background-color: black;
+    color: white;
+    padding: 3px 6px;
+}
+
+input
+{
+    margin-right: 6px;
+}
+
+input.full-input
+{
+    width: calc(100% - 12px);
+}
+
+select.full-input
+{
+    width: 100%;
+}
+
+button
+{
+    padding: 4px 8px;
+}
+
+.button-row
+{
+    margin: -4px;
+    display: flex;
+}
+
+.button-row > button
+{
+    margin: 4px;
+    flex: 1;
+}
+
+section 
+{
+    margin: 16px;
+    padding: 16px;
+    background-color: #367b6b;
+}
+
+section > h1
+{
+    color: #FFD800;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+section > h2
+{
+    font-size: 1em;
+    font-weight: bold;
+    color: #cef0df;
+
+    margin-bottom: .25em;
+}
+
+section > p
+{
+    margin-bottom: 0;
+}

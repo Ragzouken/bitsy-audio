@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>bitsy audio</title>
+  </head>
+  <body>
+    <noscript>
+        bitsy audio requires javascript and a modern graphical browser
+    </noscript>
+    <div id="publish">
+        <section>
+            <h1>add audio</h1>
+            <h2>exported html</h2>
+            <input type="file"
+                    accept=".html" 
+                    title="exported bitsy html"
+                    id="input-html">
+            <h2>audio files</h2>
+            <input type="file"
+                    accept="audio/*" 
+                    title="music to embed in the game (doesn't save to project)"
+                    id="input-audio"
+                    multiple>
+            <h2>download</h2>
+            <button id="export-zip" title="Download a zip with a playable html file and bundled music file">playable html+audio zip</button>
+        </section>
+    </div>
+  </body>
+</html>
