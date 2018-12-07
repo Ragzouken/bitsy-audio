@@ -62,7 +62,9 @@ async function exportZip(game: File, audio: FileList)
         folder.file(path, await fileToBlob(audio[i]));
     }
 
-    const insert = `\n${lines.join("\n")}\n</body>`;
+    const clickToPlay = `<script>document.addEventListener('mousedown', function(){ Array.prototype.slice.call(document.getElementsByTagName("audio")).forEach(function(element){ element.play(); }); });</script>`;
+
+    const insert = `\n${lines.join("\n")}\n${clickToPlay}</body>`;
 
     let html = await fileToString(game);
     html = html.replace("</body>", insert);
