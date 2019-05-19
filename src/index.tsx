@@ -68,6 +68,8 @@ function unmute() {
     Array.prototype.slice.call(document.getElementsByTagName("audio")).forEach(function(element){
         element.play();
     });
+    document.removeEventListener('pointerup', unmute);
+    document.removeEventListener('keydown', unmute);
 }
 document.addEventListener('pointerup', unmute);
 document.addEventListener('keydown', unmute);
