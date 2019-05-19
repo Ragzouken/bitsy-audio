@@ -58,16 +58,14 @@ async function exportZip(game: File, audio: FileList)
     {
         const path = audio[i].name;
 
-        lines.push(`<audio src="${path}" autoplay loop></audio>`);
+        lines.push(`<audio id="${path}" src="${path}" autoplay loop></audio>`);
         folder.file(path, await fileToBlob(audio[i]));
     }
 
     const clickToPlay = `
 <script>
 function unmute() {
-    Array.prototype.slice.call(document.getElementsByTagName("audio")).forEach(function(element){
-        element.play();
-    });
+    ${Array.from(audio).map(file => `document.getElementById("${file.name}").play();`).join('\n')}
     document.removeEventListener('pointerup', unmute);
     document.removeEventListener('keydown', unmute);
 }
