@@ -69,7 +69,8 @@ function unmute() {
         element.play();
     });
 }
-document.addEventListener('mousedown', unmute);
+document.addEventListener('pointerup', unmute);
+document.addEventListener('keydown', unmute);
 </script>`;
 
     const insert = `
