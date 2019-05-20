@@ -58,13 +58,25 @@ async function exportZip(game: File, audio: FileList)
     {
         const path = audio[i].name;
 
-        lines.push(`<audio src="${path}" autoplay loop></audio>`);
+        lines.push(`<audio id="${path}" src="${path}" autoplay loop></audio>`);
         folder.file(path, await fileToBlob(audio[i]));
     }
 
-    const clickToPlay = `<script>document.addEventListener('mousedown', function(){ Array.prototype.slice.call(document.getElementsByTagName("audio")).forEach(function(element){ element.play(); }); });</script>`;
+    const clickToPlay = `
+<script>
+function unmute() {
+    ${Array.from(audio).map(file => `document.getElementById("${file.name}").play();`).join('\n')}
+    document.removeEventListener('pointerup', unmute);
+    document.removeEventListener('keydown', unmute);
+}
+document.addEventListener('pointerup', unmute);
+document.addEventListener('keydown', unmute);
+</script>`;
 
-    const insert = `\n${lines.join("\n")}\n${clickToPlay}</body>`;
+    const insert = `
+${lines.join("\n")}
+${clickToPlay}
+</body>`;
 
     let html = await fileToString(game);
     html = html.replace("</body>", insert);
