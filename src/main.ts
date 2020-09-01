@@ -1,61 +1,37 @@
 import * as FileSaver from 'file-saver';
 import * as JSZip from 'jszip';
-import './index.css';
 
-function buttonClick(id: string, action: () => void)
-{
-    document.getElementById(id)!.addEventListener("click", action);
-}
+window.addEventListener('load', setup);
 
-function getElement<TElement extends HTMLElement>(id: string): TElement    
-{
-    return document.getElementById(id)! as TElement;
-}
-
-async function fileToString(file: File): Promise<string>
-{
-    return new Promise<string>((resolve, reject) =>
-    {
+async function fileToString(file: File): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
         const reader = new FileReader();
-
-        reader.onloadend = () =>
-        {
-            resolve(reader.result as string);
-        };
-
+        reader.onloadend = () => resolve(reader.result as string);
         reader.readAsText(file);
     });
 }
 
-async function fileToBlob(file: File): Promise<Blob>
-{
+async function fileToBlob(file: File): Promise<Blob> {
     const reader = new FileReader();
-    const promise = new Promise<Blob>(resolve =>
-    {
-        reader.onloadend = () =>
-        {
+    const promise = new Promise<Blob>(resolve => {
+        reader.onloadend = () => {
             const data = reader.result as ArrayBuffer;
             const blob = new Blob([data], {type: file.type});
-
             resolve(blob);
         };
     });
-
     reader.readAsArrayBuffer(file);
-
     return promise;
 }
 
-async function exportZip(game: File, audio: FileList)
-{
+async function exportZip(game: File, audio: FileList) {
     const name = game.name.replace(/\.html$/, "");
     const zip = JSZip();
-    const folder = zip.folder(name);
+    const folder = zip.folder(name)!;
 
     const lines = [];
 
-    for (let i = 0; i < audio.length; ++i)
-    {
+    for (let i = 0; i < audio.length; ++i) {
         const path = audio[i].name;
 
         lines.push(`<audio id="${path}" src="${path}" autoplay loop></audio>`);
@@ -73,10 +49,7 @@ document.addEventListener('pointerup', unmute);
 document.addEventListener('keydown', unmute);
 </script>`;
 
-    const insert = `
-${lines.join("\n")}
-${clickToPlay}
-</body>`;
+    const insert = `${lines.join("\n")} ${clickToPlay}</body>`;
 
     let html = await fileToString(game);
     html = html.replace("</body>", insert);
@@ -88,15 +61,10 @@ ${clickToPlay}
     FileSaver.saveAs(content, `${name}.zip`);
 }
 
-function setup()
-{
-    const htmlInput = getElement<HTMLInputElement>("input-html");
-    const audioInput = getElement<HTMLInputElement>("input-audio");
+function setup() {
+    const htmlInput = document.getElementById("input-html") as HTMLInputElement;
+    const audioInput = document.getElementById("input-audio") as HTMLInputElement;
+    const exportButton = document.getElementById("export-zip") as HTMLButtonElement;
 
-    buttonClick("export-zip", () =>
-    {
-        exportZip(htmlInput.files![0], audioInput.files!);
-    });
+    exportButton.addEventListener('click', () => exportZip(htmlInput.files![0], audioInput.files!));
 }
-
-setup();

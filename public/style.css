@@ -1,0 +1,72 @@
+[hidden] { display: none !important; }
+* { box-sizing: border-box; }
+
+canvas, img {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    font-family: monospace;
+    font-size: larger;
+
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+
+    background: url('http://kool.tools/world-of-bitsy.jpg');
+    background-position-x: center;
+    background-size: 200%;
+}
+
+body { display: flex; }
+h2 { margin: auto; }
+
+main {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+
+    width: 32rem;
+    margin: auto;
+
+    background: black;
+    color: white;
+}
+
+label {
+    display: flex;
+}
+
+label > * {
+    flex: 1;
+}
+
+input {
+    flex: 1;
+}
+
+button { font-size: large; margin: auto; }
+
+#renderer {
+    width: 100%; height: 100%;
+    cursor: pointer;
+}
+
+#tooltip {
+    position: absolute;
+    left: 0; bottom: 0;
+    margin: 1rem;
+    padding: 1rem;
+
+    color: white;
+    background: black;
+    border-radius: 1rem;
+}
