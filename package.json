@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ragzouken/world-of-bitsy.git"
+    "url": "git+https://github.com/Ragzouken/bitsy-audio.git"
   },
   "author": "",
   "license": "ACSL",
   "bugs": {
-    "url": "https://github.com/Ragzouken/world-of-bitsy/issues"
+    "url": "https://github.com/Ragzouken/bitsy-audio/issues"
   },
-  "homepage": "https://github.com/Ragzouken/world-of-bitsy#readme",
+  "homepage": "https://github.com/Ragzouken/bitsy-audio#readme",
   "devDependencies": {
     "@types/file-saver": "^2.0.1",
     "@types/jszip": "^3.4.1",
