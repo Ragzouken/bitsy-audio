@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title add bitsy audio
+        link(rel="icon", type="image/png", href="icon.png")
+        link(rel="stylesheet", href="style.css")
+        script(src="script.js")
+    body
+        main
+            h2 add background audio to an html page
+            label
+                div 📄 exported html
+                input#input-html(type="file" accept=".html" title="exported bitsy html")
+            label
+                div 🔊 audio files
+                input#input-audio(type="file" accept="audio/*" title="music to embed in the game" multiple)
+            button#export-zip(title="download a zip with a playable html file and bundled music files") 💾 generate bundle
