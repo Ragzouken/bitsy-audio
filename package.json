@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "file-saver": "^2.0.2",
-    "jszip": "^3.5.0"
+    "jszip": "^3.7.0"
   }
 }
